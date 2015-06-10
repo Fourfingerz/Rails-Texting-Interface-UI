@@ -1,18 +1,18 @@
 class Task < ActiveRecord::Base
   belongs_to :user
 
+  # Sends a text message using Figaro environment and relays to twilio
   def send_text_message
-  	number_to_send_to = recipient.phone
+  	number_to_send_to = 'SECRET'
+    twilio_num = 'SECRET'
+    @client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
 
-  	twilio_sid = ENV["TWILIO_ACCOUNT_SID"]
-  	twilio_token = ENV["TWILIO_AUTH_TOKEN"] 
-  	twilio_phone_number = ENV["TWILIO_PHONE_NUM"]
-
-  	@twilio_cilient = Twilio::REST::Client.new twilio_sid, twilio_token
-
-  	@twilio_client.account.sms.messages.create(
-  	  :from => "+1#{twilio_phone_number}",
+  	@message = @client.messages.create( 
+      :from => twilio_num,
   	  :to   => number_to_send_to,
-  	  :body => message
-  	)
+  	  :body => 'Hi I\'m a computer. I\'m pretty stupid, but JC can make me send texts and X_X faces. <3'
+      )
+    
+    render plain: @message.status
+  end
 end

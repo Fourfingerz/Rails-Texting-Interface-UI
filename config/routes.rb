@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'notifications/notify'
+
   get 'task/create'
 
   get 'twilio/voice'
   post 'twilio/voice' => 'twilio#voice'
+  post 'task/create' => 'task#create'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
