@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'task/create'
+
   get 'twilio/voice'
   post 'twilio/voice' => 'twilio#voice'
 
