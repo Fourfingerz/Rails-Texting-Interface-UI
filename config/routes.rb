@@ -1,5 +1,25 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/show'
+
+  get 'users/new'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/destroy'
+
+  get 'users/following'
+
+  get 'users/followers'
+
   get 'notifications/notify'
+
+  get 'signup' => 'users#new'
 
   get 'task/create'
 
@@ -7,6 +27,7 @@ Rails.application.routes.draw do
   post 'twilio/voice' => 'twilio#voice'
   post 'task/create' => 'task#create'
 
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
