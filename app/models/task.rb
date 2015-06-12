@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :user
+  belongs_to :recipient
 
   # Sends a text message using secrets ENV and relays to twilio
   def send_text_message
@@ -17,5 +18,14 @@ class Task < ActiveRecord::Base
       )
 
     render plain: @message.status
+  end
+
+  def delayed_job
+    Delayed::Job.find(delayed_job_id)
+  end
+
+  def schedule_texting
+    job = self.delay(run_at: self.schedule_time).send_text_message
+    update_column(:delayed_job_id, job.id)
   end
 end
