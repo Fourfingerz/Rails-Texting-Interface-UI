@@ -29,6 +29,9 @@ gem 'figaro'
 # Twilio handles inbound/outbound texting requests
 gem 'twilio-ruby'
 
+# Delayed job for crono-like scheduling behavior
+gem 'delayed_job_active_record'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

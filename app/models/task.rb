@@ -3,7 +3,7 @@ class Task < ActiveRecord::Base
 
   # Sends a text message using secrets ENV and relays to twilio
   def send_text_message
-  	number_to_send_to = 'somenum'
+  	number_to_send_to = '13473063012'
     twilio_phone = ENV["TWILIO_PHONE_NUM"]
     twilio_account_sid = Rails.application.secrets.twilio_account_sid
     twilio_auth_token = Rails.application.secrets.twilio_auth_token
