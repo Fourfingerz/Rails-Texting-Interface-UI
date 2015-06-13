@@ -1,0 +1,15 @@
+<h1>Tasks #index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+
+<ul class="tasks">
+  <% @tasks.each do |task| %>
+    <div>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= task.text_message_body %></td>
+        <td><%= task.schedule_time %></td>
+	  </tr>
+    </div>
+    <% end %>
+</ul>

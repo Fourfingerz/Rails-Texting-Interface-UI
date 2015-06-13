@@ -19,6 +19,10 @@ class TasksController < ApplicationController
   	end
   end
 
+  def index
+    @tasks = Task.all
+  end
+
   private 
 
   def task_params
