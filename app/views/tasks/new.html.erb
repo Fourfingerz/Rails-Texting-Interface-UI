@@ -1,0 +1,24 @@
+<h1>Make a new task</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@task) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form_control' %>
+
+      <%= f.label :description %>
+      <%= f.email_field :description, class: 'form_control' %>
+	  
+      <%= f.label :text_message_body %>
+      <%= f.text_area :text_message_body, class: 'form_control' %>
+    <div class="recipients">
+      <p>Recipient List:</p>
+      <p>
+        <%= collection_select(:task, :recipient_id, @recipients, :id, :name) %>
+      </p>
+      
+    </div>
+      <%= f.submit "Create my task", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

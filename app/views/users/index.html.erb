@@ -4,7 +4,12 @@
 <ul class="users">
   <% @users.each do |user| %>
     <div>
-      <h3><%= user.name %></h3>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.admin %></td>
+	  </tr>
     </div>
     <% end %>
 </ul>

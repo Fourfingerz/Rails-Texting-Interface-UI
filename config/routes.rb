@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'recipients/new'
+
+  get 'recipients/create'
+
+  get 'recipients/index'
+
   get 'users/index'
 
   get 'users/show'
@@ -28,6 +34,8 @@ Rails.application.routes.draw do
   post 'task/create' => 'task#create'
 
   resources :users
+  resources :tasks, :only => [:new, :create, :edit, :index, :update]
+  resources :recipients, :only => [:new, :create, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

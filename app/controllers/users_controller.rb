@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all.order(name: :desc)
+    @users = User.all
   end
 
   def show
@@ -39,6 +39,6 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    params.require(:user).permit(:email, :name)
+    params.require(:user).permit(:email, :name, :phone, :admin)
   end
 end
