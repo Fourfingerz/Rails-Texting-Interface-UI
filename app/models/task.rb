@@ -24,7 +24,7 @@ class Task < ActiveRecord::Base
     Delayed::Job.find(delayed_job_id)
   end
 
-  def schedule_texting
+  def schedule_sending_text
     job = self.delay(run_at: self.schedule_time).send_text_message
     update_column(:delayed_job_id, job.id)
   end

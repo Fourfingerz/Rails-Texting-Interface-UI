@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
-
-  skip_before_action :verify_authenticity_token
+  def index
+    @tasks = Task.all
+  end
 
   def new
   	@task = Task.new
-    @user = User.new
+    @user = User.first
     @recipients = Recipient.all
   end
 
@@ -19,8 +20,23 @@ class TasksController < ApplicationController
   	end
   end
 
-  def index
-    @tasks = Task.all
+  def show
+    @task = Task.find(params[:id])
+  end
+
+  def edit
+    @user = User.first
+    @recipients = @user.recipients
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update_attributes(task_params)
+      redirect_to tasks_path
+    else
+      render :edit
+    end
   end
 
   private 
