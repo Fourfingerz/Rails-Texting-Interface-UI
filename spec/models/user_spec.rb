@@ -28,14 +28,46 @@ describe User do
     expect(user).not_to be_valid 
   end
 
+  it "is invalid without an email" do
+    user = User.new(
+      name: 'Sze Chan',
+      email: nil,
+      phone: '1234567890'
+    )
+    expect(user).not_to be_valid
+  end
 
-  it "is invalid without an email" 
+  it "is invalid without a proper format in email field" do
+    user = User.new(
+      name: 'Sze Chan',
+      email: 'hellosze.codes',
+      phone: '1234567890'
+    )
+    expect(user).not_to be_valid
+  end
 
+  it "is invalid without a phone" do
+    user = User.new(
+      name: 'Sze Chan',
+      email: 'hello@sze.codes',
+      phone: nil
+    )
+    expect(user).not_to be_valid
+  end
 
-  it "is invalid without a proper format in email field" 
-
-  it "is invalid without a phone" 
-
-
-  it "is invalid with a duplicate email" 
+  it "is invalid with a duplicate email" do
+    User.create(
+        name: 'Sze Chan',
+        email: 'hello@sze.codes',
+        phone: '1234567890'
+      )
+    other_user = User.new(
+        name: 'Albertus Maximus',
+        email: 'hello@sze.codes',
+        phone: '1234567899'
+      )
+    expect(other_user).not_to be_valid
+    # other_user.valid?
+    # expect(other_user.errors[:email]).to include("has already been taken")
+  end
 end 
