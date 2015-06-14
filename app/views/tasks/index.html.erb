@@ -5,9 +5,9 @@
   <% @tasks.each do |task| %>
     <div>
       <tr>
-        <td><%= task.name %></td>
-        <td><%= task.description %></td>
-        <td><%= task.text_message_body %></td>
+        <td><%= task.activity %></td>
+        <td><%= task.message %></td>
+        <td><%= task.recipient_id %>
         <td><%= task.schedule_time %></td>
 	  </tr>
     </div>
