@@ -16,8 +16,8 @@ class Task < ActiveRecord::Base
   	@message = @client.messages.create( 
       :from => twilio_phone,
   	  :to   => number_to_send_to,
-  	  :body => 'What a piece of work is a man! How noble in reason, how infinite in faculty, in form and moving how express and admirable, in action how like an angel, in apprehension how like a god -- the beauty of the world, the paragon of animals!'
-      )
+  	  :body => 
+    )
 
     render plain: @message.status
   end
