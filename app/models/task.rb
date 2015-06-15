@@ -20,9 +20,8 @@ class Task < ActiveRecord::Base
   	@message = @client.messages.create( 
       :from => twilio_phone,
   	  :to   => number_to_send_to,
-  	  :body => 
+  	  :body => message
     )
-
     render plain: @message.status
   end
 
