@@ -1,12 +1,13 @@
 class Task < ActiveRecord::Base
-  belongs_to :user
-  has_many :recipients
-  after_create :schedule_sending_text
-  before_save :change_run_at
+  has_one   :user
+  has_many  :recipients
   validates :activity, presence: true
   validates :message, presence: true, length: { minimum: 1 }
   validates :schedule_time, presence: true
-  validates_associated :name, :recipient, presence: true
+  #validates_associated :name, :recipient, presence: true
+
+  after_create :schedule_sending_text
+  before_save :change_run_at
 
   # Sends a text message using secrets ENV and relays to twilio
   def send_text_message
