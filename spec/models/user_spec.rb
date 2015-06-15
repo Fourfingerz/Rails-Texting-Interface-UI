@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User do
-  it "is invalid with a name, bad email, phone" do
+  it "is valid with a name, email, phone" do
   	user = User.new(
   	  name: 'Sze Chan',
   	  email: 'hello@sze.codes',
