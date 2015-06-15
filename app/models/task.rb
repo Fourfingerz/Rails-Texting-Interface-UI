@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :user
-  belongs_to :recipient
+  has_many :recipients
   after_create :schedule_sending_text
   before_save :change_run_at
   validates :activity, presence: true
