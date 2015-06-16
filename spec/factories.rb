@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :recipient do
-    name "Joe Schmoe"
-    email "thing@example.com"
-    phone "0000000000"
+    name "Jon Snow"
+    email "commander@nightwatch.com"
+    phone "1234567890"
   end
 end
