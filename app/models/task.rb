@@ -1,9 +1,9 @@
 class Task < ActiveRecord::Base
-  has_one   :user
-  has_many  :recipients
-  validates :activity, presence: true
-  validates :message, presence: true, length: { minimum: 1 }
-  validates :schedule_time, presence: true
+  belongs_to :user
+  has_many   :recipients
+  validates  :activity, presence: true
+  validates  :message, presence: true, length: { minimum: 1 }
+  validates  :schedule_time, presence: true
   #validates_associated :name, :recipient, presence: true
 
   after_create :schedule_sending_text

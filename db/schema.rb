@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614001941) do
+ActiveRecord::Schema.define(version: 20150616004202) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150614001941) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.integer  "task_id"
   end
 
   create_table "tasks", force: :cascade do |t|

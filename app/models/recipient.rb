@@ -1,5 +1,6 @@
 class Recipient < ActiveRecord::Base
 	belongs_to :task
+	belongs_to :user
 	validates :name, presence: true, length: { minimum: 5 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255 },
