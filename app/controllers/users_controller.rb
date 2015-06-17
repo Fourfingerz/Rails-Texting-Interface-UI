@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tasks = @user.tasks.paginate(page: params[:page])
+    @tasks = @user.tasks
   end
 
   def new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:info] = "New User Created!"
-      redirect_to user_show_url
+      redirect_to users_url
     else
       render 'new'
     end

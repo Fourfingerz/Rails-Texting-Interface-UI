@@ -1,11 +1,13 @@
 <h1>Users#index</h1>
 <p>Find me in app/views/users/index.html.erb</p>
 
+<h1>All users</h1>
+
 <ul class="users">
   <% @users.each do |user| %>
     <div>
       <tr>
-        <td><%= user.name %></td>
+        <td><%= link_to user.name, user %></td>
         <td><%= user.email %></td>
         <td><%= user.phone %></td>
         <td><%= user.admin %></td>
