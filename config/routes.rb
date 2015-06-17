@@ -1,32 +1,22 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
+
   get 'recipients/new'
-
   get 'recipients/create'
-
   get 'recipients/index'
 
   get 'users/index'
-
   get 'users/show'
-
   get 'users/new'
-
   get 'users/create'
-
   get 'users/edit'
-
   get 'users/update'
-
   get 'users/destroy'
-
   get 'users/following'
-
   get 'users/followers'
 
   get 'notifications/notify'
-
   get 'signup' => 'users#new'
-
   get 'task/create'
 
   get 'twilio/voice'
