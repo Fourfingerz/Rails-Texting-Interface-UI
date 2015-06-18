@@ -33,11 +33,12 @@ gem 'twilio-ruby'
 gem 'delayed_job_active_record'
 # Daemons for FINAL DOOM. Heh, j/k. Use it with delayed_jobs!
 gem 'daemons'
-
-gem 'bootstrap-sass'
+# Frontend Framework
+gem 'twitter-bootstrap-rails'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 # Use Capistrano for deployment

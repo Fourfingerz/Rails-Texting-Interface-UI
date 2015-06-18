@@ -9,6 +9,12 @@
         <td><%= task.message %></td>
         <td><%= task.recipient_id %>
         <td><%= task.schedule_time %></td>
+          <td>
+            <h3><%= @recipients.each do |recipient|  %></h3>
+              <td><%= recipient.name %></td>
+              <td><%= recipient.phone %></td>
+          </td>
+            <% end %>
 	  </tr>
     </div>
     <% end %>

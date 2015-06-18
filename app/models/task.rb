@@ -1,13 +1,20 @@
 class Task < ActiveRecord::Base
   belongs_to :user
-  has_many   :recipients
+ 
+  validates  :user, :presence => true
+  validates  :user_id, presence: true
   validates  :activity, presence: true
   validates  :message, presence: true, length: { minimum: 1 }
   validates  :schedule_time, presence: true
   #validates_associated :name, :recipient, presence: true
 
-  after_create :schedule_sending_text
+  #after_create :schedule_sending_text
   before_save :change_run_at
+
+  # Gets all tasks made by users referenced by the IDs passed, starting with most recent.
+  def self.by_user_ids(*ids)
+    where(:user_id => ids.flatten.compact.uniq).order('created_at DESC')
+  end
 
   # Sends a text message using secrets ENV and relays to twilio
   def send_text_message

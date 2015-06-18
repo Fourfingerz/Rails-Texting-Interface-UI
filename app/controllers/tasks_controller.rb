@@ -1,23 +1,9 @@
 class TasksController < ApplicationController
+
+  before_filter :authorize, only: [:new]
+
   def index
     @tasks = Task.all
-  end
-
-  def new
-  	@task = Task.new
-    @user = User.first
-    @recipients = Recipient.all
-  end
-
-  def create
-  	@task = Task.new(task_params)
-  	@task.user = User.first
-  	
-    if @task.save
-      redirect_to tasks_url  
-  	else
-  	  render 'new'
-  	end
   end
 
   def show
@@ -25,8 +11,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @user = User.first
-    @recipients = @user.recipients
     @task = Task.find(params[:id])
   end
 
@@ -39,10 +23,29 @@ class TasksController < ApplicationController
     end
   end
 
+  def new
+    @task = Task.new(:user => User.first)
+    @recipients = @task.recipients
+  end
+
+  def create
+  	@user = User.first
+    @task = @user.tasks.build(task_params)
+  	
+    if @task.save
+      redirect_to tasks_url  
+  	else
+  	  render 'new'
+  	end
+  end
+
+
+
+
   private 
 
   def task_params
-    params.require(:task).permit(:name, :description, :text_message_body, :user_id, :recipient_id, :schedule_time, :delayed_job_id, :completed)
+    params.require(:task).permit(:activity, :message, :user_id, :recipient_ids, :schedule_time, :delayed_job_id, :completed)
   end
 
 end

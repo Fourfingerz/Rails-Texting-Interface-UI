@@ -29,7 +29,7 @@
     <br />
     <p>Recipient List:</p>
     <p>
-      <%= collection_select(:task, :recipient_id, Recipient.all, :id, :name) %>
+      <%= f.collection_select(:recipient_id, Recipient.all, :id, :name) %>
     </p>
   </div>
 

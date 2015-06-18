@@ -1,14 +1,32 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+  <%= link_to "Add somebody to keep you accountable!", new_recipient_path, class: "btn btn-lg btn-primary" %>
 
-<h1>Here are all the current Tasks for <%= @user.name %></h1>
 
-<ul class="tasks">
-  <% @tasks.each do |task| %>
-    <div>
-      <tr>
-        <td><%= link_to tasks.activity, task %></td>
-	  </tr>
-    </div>
-    <% end %>
-</ul>
+<div>  
+	<h1>Here are all the current Tasks for <%= @user.name %></h1>
+
+	<ul class="tasks">
+	  <% @tasks.each do |task| %>
+	    <div>
+	      <tr>
+	        <td><%= link_to tasks.activity, task %></td>
+		  </tr>
+	    </div>
+	    <% end %>
+	</ul>
+</div>
+
+<div>
+	<h1>Here are all the recipients for <%= @user.name %></h1>
+
+	<ul class="recipients">
+	  <% @recipients.each do |recipient| %>
+	    <div>
+	      <tr>
+	        <td><%= recipient.name %></td>
+		  </tr>
+	    </div>
+	    <% end %>
+	</ul>
+</div>

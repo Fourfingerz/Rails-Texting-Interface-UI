@@ -13,7 +13,15 @@
       <%= f.email_field :email, class: 'form_control' %>
 	  
       <%= f.label :phone %>
-      <%= f.text_field :phone, class: 'form_control' %>     
+      <%= f.text_field :phone, class: 'form_control' %>
+
+      <div class="field">
+        <br />
+        <p>Which User Does Recipient Belong to?</p>
+        <p>
+          <%= f.collection_select(:user_id, User.all, :id, :name) %>
+        </p>
+      </div>     
 
       <%= f.submit "Add a recipient", class: "btn btn-primary" %>
     <% end %>
