@@ -5,11 +5,30 @@
 <div>  
 	<h1>Here are all the current Tasks for <%= @user.name %></h1>
 
+		  <%= link_to "Set a new goal!", new_task_path, class: "btn btn-lg btn-primary" %>
+
 	<ul class="tasks">
 	  <% @tasks.each do |task| %>
 	    <div>
 	      <tr>
-	        <td><%= link_to tasks.activity, task %></td>
+	        <td><%= task.activity %></td>
+
+	        <td>
+	          <h3>This is the SMS you sent out</h3>
+	            <p><%= task.message %></p>
+	        </td>
+
+	        <td>
+	          <h3>Your accountability buddies!</h3>
+	            <p><%= task.recipients.each do |recipient| %>
+	              <ol><%= recipient.name %></ol>
+	            </p>
+	              <% end %>
+	          </h3>
+	        </td>
+
+	        <td><%= task.schedule_time %>
+
 		  </tr>
 	    </div>
 	    <% end %>
