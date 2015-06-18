@@ -37,7 +37,7 @@ gem 'daemons'
 gem 'twitter-bootstrap-rails'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt'
+gem 'bcrypt-ruby'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

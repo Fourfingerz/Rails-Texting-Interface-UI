@@ -3,15 +3,37 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form_control' %>
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form_control' %>
+      </div>
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form_control' %>
+	    </div>
+      <div>
+        <%= f.label :phone %>
+        <%= f.text_field :phone, class: 'form_control' %>
+      </div>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form_control' %>
+      </div>
+      <div>
+        <%= f.label :password_confirmations %>
+        <%= f.password_field :password_confirmations, class: 'form_control' %>
+      </div>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form_control' %>
-	  
-      <%= f.label :phone %>
-      <%= f.text_field :phone, class: 'form_control' %>     
-      
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
   </div>

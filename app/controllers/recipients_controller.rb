@@ -4,8 +4,7 @@ class RecipientsController < ApplicationController
   end
 
   def create
-    @user = User.first
-  	@recipient = @user.recipients.build(recipient_params)
+  	@recipient = @current_user.recipients.build(recipient_params)
   	if @recipient.save
   	  redirect_to recipients_index_url
   	else

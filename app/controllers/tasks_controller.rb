@@ -29,18 +29,13 @@ class TasksController < ApplicationController
   end
 
   def create
-  	@user = User.first
-    @task = @user.tasks.build(task_params)
-  	
+    @task = @current_user.tasks.build(task_params)
     if @task.save
       redirect_to tasks_url  
   	else
   	  render 'new'
   	end
   end
-
-
-
 
   private 
 
