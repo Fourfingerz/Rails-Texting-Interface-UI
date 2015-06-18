@@ -1,6 +1,5 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
-  <%= link_to "Add somebody to keep you accountable!", new_recipient_path, class: "btn btn-lg btn-primary" %>
 
 
 <div>  
@@ -20,6 +19,8 @@
 <div>
 	<h1>Here are all the recipients for <%= @user.name %></h1>
 
+	  <%= link_to "Add somebody to keep you accountable!", new_recipient_path, class: "btn btn-lg btn-primary" %>
+
 	<ul class="recipients">
 	  <% @recipients.each do |recipient| %>
 	    <div>
@@ -29,4 +30,6 @@
 	    </div>
 	    <% end %>
 	</ul>
+
+
 </div>

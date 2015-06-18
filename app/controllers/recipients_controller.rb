@@ -4,9 +4,10 @@ class RecipientsController < ApplicationController
   end
 
   def create
-  	@recipient = current_user.recipients.build(recipient_params)
+  	@recipient = Recipient.new(recipient_params)
+    @recipient.user_id = current_user.id
   	if @recipient.save
-  	  redirect_to recipients_index_url
+  	  redirect_to user_path(session[:user_id])
   	else
   	  render 'new'
   	end
