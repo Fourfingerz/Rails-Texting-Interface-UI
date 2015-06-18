@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Recipient do
-  it "is valid with a name, email, phone and task" do
+  it "is valid with a name, email, phone, and when it belongs to a user" do
     recipient = FactoryGirl.build_stubbed(:recipient)
   	expect(recipient).to be_valid
   end
@@ -20,5 +20,9 @@ describe Recipient do
   	recipient = FactoryGirl.build_stubbed(:recipient, phone: '3457')
   	expect(recipient).not_to be_valid
   end
-  it "is invalid without at least one assigned task"
+
+  it "is invalid if it doesn't belong to a user" do
+    recipient = FactoryGirl.build_stubbed(:recipient, user_id: '')
+    expect(recipient).not_to be_valid
+  end
 end
