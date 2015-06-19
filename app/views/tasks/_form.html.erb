@@ -29,7 +29,7 @@
     <br />
     <p>Recipient List:</p>
     <p>
-      <%= f.collection_select(:recipient_id, Recipient.all, :id, :name) %>
+      <%= f.collection_select(:recipient_id, Recipient.where(:user_id => session[:user_id]), :id, :name) %>
     </p>
   </div>
 

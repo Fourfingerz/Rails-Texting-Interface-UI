@@ -1,9 +1,24 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Welcome <%= @user.name %>!</h1>
 
+
+<div>
+	<h1>Here are your accountability buddies:</h1>
+
+	  <%= link_to "Add somebody to keep you accountable!", new_recipient_path, class: "btn btn-lg btn-primary" %>
+
+	<ul class="recipients">
+	  <% @recipients.each do |recipient| %>
+	    <div>
+	      <tr>
+	        <td><%= recipient.name %></td>
+		  </tr>
+	    </div>
+	    <% end %>
+	</ul>
+</div>
 
 <div>  
-	<h1>Here are all the current Tasks for <%= @user.name %></h1>
+	<h1>Here are all your scheduled goals:</h1>
 
 		  <%= link_to "Set a new goal!", new_task_path, class: "btn btn-lg btn-primary" %>
 
@@ -35,20 +50,3 @@
 	</ul>
 </div>
 
-<div>
-	<h1>Here are all the recipients for <%= @user.name %></h1>
-
-	  <%= link_to "Add somebody to keep you accountable!", new_recipient_path, class: "btn btn-lg btn-primary" %>
-
-	<ul class="recipients">
-	  <% @recipients.each do |recipient| %>
-	    <div>
-	      <tr>
-	        <td><%= recipient.name %></td>
-		  </tr>
-	    </div>
-	    <% end %>
-	</ul>
-
-
-</div>
