@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tasks = @user.tasks
-    @recipients = @user.recipients
+    # Find recipients whose task_id equals listed task
+    #@recipients = @tasks.recipients
+    @recipients = params[:task_id].present? ?
+      @user.tasks.joins(:tasks).where(tasks: {name: params[:task_id]}) :
+      @user.tasks
   end
 
   def new

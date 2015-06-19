@@ -40,7 +40,7 @@ class TasksController < ApplicationController
   private 
 
   def task_params
-    params.require(:task).permit(:activity, :message, :user_id, :recipient_ids, :schedule_time, :delayed_job_id, :completed)
+    params.require(:task).permit(:activity, :message, :user_id, :recipient_id, :schedule_time, :delayed_job_id, :completed)
   end
 
 end

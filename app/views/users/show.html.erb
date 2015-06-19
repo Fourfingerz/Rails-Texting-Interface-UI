@@ -26,27 +26,31 @@
 	  <% @tasks.each do |task| %>
 	    <div>
 	      <tr>
+	        <h3>Goal:</h3>
 	        <td><%= task.activity %></td>
 
 	        <td>
-	          <h3>This is the SMS you sent out</h3>
+	          <h3>SMS:</h3>
 	            <p><%= task.message %></p>
 	        </td>
 
 	        <td>
-	          <h3>Your accountability buddies!</h3>
-	            <p><%= task.recipients.each do |recipient| %>
-	              <ol><%= recipient.name %></ol>
-	            </p>
-	              <% end %>
-	          </h3>
+	        <h3>Text Outbound at:</h3>
+	        <%= task.schedule_time %>
 	        </td>
-
-	        <td><%= task.schedule_time %>
-
+			
+			<h3>Keeping you accountable for this task:</h3>
+			<% task.recipients.each do |recipient| %>
+			  <div>
+			  <%= recipient %>
+			  </div>
+			<% end %>
+			</br>
+			</br>
 		  </tr>
 	    </div>
 	    <% end %>
+
 	</ul>
 </div>
 
