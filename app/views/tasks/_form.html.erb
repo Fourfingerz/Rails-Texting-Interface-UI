@@ -28,9 +28,11 @@
 <div class="field">
     <br />
     <p>Recipient List:</p>
+    <%= f.fields_for :recipients do |recipients_fields| %>
     <p>
-      <%= f.collection_select(:recipient_id, Recipient.where(:user_id => session[:user_id]), :id, :name) %>
+      <%= recipients_fields.collection_select(:tasks,  Recipient.where(:user_id => session[:user_id]), :id, :name) %>
     </p>
+    <% end %>
   </div>
 
 

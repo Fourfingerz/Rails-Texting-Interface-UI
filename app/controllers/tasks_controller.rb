@@ -25,6 +25,8 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @user = current_user
+    @recipients = @user.recipients
   end
 
   def create
