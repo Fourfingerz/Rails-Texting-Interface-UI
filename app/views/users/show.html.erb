@@ -27,7 +27,7 @@
 	    <div>
 	      <tr>
 	        <h3>Goal:</h3>
-	        <td><%= task.activity %></td>
+	        <td><%= link_to task.activity, edit_task_path, class: "btn btn-lg btn-primary" %></td>
 
 	        <td>
 	          <h3>SMS:</h3>

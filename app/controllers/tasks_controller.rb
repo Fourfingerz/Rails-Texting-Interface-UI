@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-      redirect_to tasks_path
+      redirect_to user_path(session[:user_id])
     else
       render :edit
     end

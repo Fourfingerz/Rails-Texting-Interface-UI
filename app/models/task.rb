@@ -45,4 +45,13 @@ class Task < ActiveRecord::Base
       delayed_job.update_column(:run_at, schedule_time)
     end
   end
+
+  def handle_recipients
+    self.recipient_ids = self.recipient_ids.select(&:present?).join(';') 
+    # .select(&:present?) is necessary to avoid empty objects to be stored
+  end
+
+  def similars
+    self.class.find(self.recipient_ids.split(';'))
+  end
 end

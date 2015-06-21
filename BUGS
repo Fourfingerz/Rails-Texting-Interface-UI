@@ -1,3 +1,8 @@
+FEATURES: June 20th 2015
+
+- Ability to delete recipients belonging to tasks
+
 BUG: June 20th 2015
 
 - AUTOMATICALLY Assigns recipients to existing tasks regardless of assignment when adding new recipients. (FIX)
+

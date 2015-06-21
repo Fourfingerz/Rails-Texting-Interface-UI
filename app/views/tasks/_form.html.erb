@@ -28,11 +28,9 @@
 <div class="field">
     <br />
     <p>Recipient List:</p>
-    <%= f.fields_for :recipients do |recipients_fields| %>
     <p>
-      <%= recipients_fields.collection_select(:tasks,  Recipient.where(:user_id => session[:user_id]), :id, :name) %>
+      <%= f.select :recipient_ids, options_from_collection_for_select(Recipient.where(:user_id => session[:user_id]), :id, :name, {:selected => @task.recipient_ids.split(';')}), {}, {:multiple => true, :size => 4, :name => 'recipient[recipient_ids][]'} %>
     </p>
-    <% end %>
   </div>
 
 
