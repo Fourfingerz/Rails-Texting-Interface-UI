@@ -2,7 +2,7 @@
 
 
 <div>
-	<h1>Here are your accountability buddies:</h1>
+	<h3>Here are your accountability buddies:</h3>
 
 	  <%= link_to "Add somebody to keep you accountable!", new_recipient_path, class: "btn btn-lg btn-primary" %>
 
@@ -18,16 +18,17 @@
 </div>
 
 <div>  
-	<h1>Here are all your scheduled goals:</h1>
+	<h3>Here are all your scheduled goals:</h3>
 
 		  <%= link_to "Set a new goal!", new_task_path, class: "btn btn-lg btn-primary" %>
-
+	</br>
+	</br>
 	<ul class="tasks">
 	  <% @tasks.each do |task| %>
 	    <div>
 	      <tr>
 	        <h3>Goal:</h3>
-	        <td><%= link_to task.activity, edit_task_path, class: "btn btn-lg btn-primary" %></td>
+	        <td><%= link_to task.activity, edit_task_path, class: "btn btn-lg btn-warning" %></td>
 
 	        <td>
 	          <h3>SMS:</h3>

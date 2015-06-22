@@ -13,7 +13,7 @@
 			<%= link_to "Sample Rails Texting App", root_path, :class => "brand" %>
 				<div class='session-controls'>
 					<% if current_user %>
-						<%= link_to "Log Out", logout_path, :class => 'btn btn-primary btn-mini' %>						Logged in as <%= current_user.email %>.
+						<%= link_to "Log Out", logout_path, :class => 'btn btn-danger btn-mini' %>						Logged in as <%= current_user.email %>.
 					<% else %>
 						<div class="btn-group">
 							<%= link_to "Sign Up", signup_path, :class => "btn btn-mini" %>
