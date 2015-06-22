@@ -17,9 +17,14 @@ class RecipientsController < ApplicationController
     @recipients = Recipient.all
   end
 
+  def update
+    @recipients.update(recipient_params)
+  end
+
+
   private
 
   def recipient_params
-  	params.require(:recipient).permit(:name, :email, :phone)
+  	params.require(:recipient).permit(:name, :email, :phone, task_ids: [])
   end
 end

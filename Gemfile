@@ -35,9 +35,9 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 # Frontend Framework
 gem 'twitter-bootstrap-rails'
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
+gem 'simple_form'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -16,6 +16,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    @recipients = Recipient.where(:user_id => session[:user_id])
     if @task.update_attributes(task_params)
       redirect_to user_path(session[:user_id])
     else
@@ -42,7 +43,7 @@ class TasksController < ApplicationController
   private 
 
   def task_params
-    params.require(:task).permit(:activity, :message, :user_id, :recipient_id, :schedule_time, :delayed_job_id, :completed)
+    params.require(:task).permit(:activity, :message, :user_id, :schedule_time, :delayed_job_id, :completed, :recipient_id => [] )
   end
 
 end

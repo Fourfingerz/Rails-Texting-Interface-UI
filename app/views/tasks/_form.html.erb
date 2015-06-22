@@ -2,15 +2,15 @@
 
   <div class="field">
     <p>
-      <%= f.label :activity %>:
-      <%= f.text_field :activity %><br />
+      <%= f.label :activity %>
+      <%= f.text_field :activity, label: 'Activity' %><br />
     </p>
   </div>
 
   <div class="field">
     <p>
-      <%= f.label "Text Message" %>:
-      <%= f.text_area :message %><br />
+      <%= f.label :message %>
+      <%= f.text_field :message %><br />
     </p>
   </div>
 
@@ -30,7 +30,7 @@
     <p>Recipient List:</p>
     
     <p>
-      <%= collection_check_boxes(:task, :recipient_ids, Recipient.where(:user_id => session[:user_id]), :id, :name) %>
+      <%= f.collection_check_boxes(:recipients, Recipient.where(:user_id => session[:user_id]), :id, :name) %>
     </p>
   </div>
 
