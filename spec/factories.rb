@@ -1,4 +1,12 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :ownership do
+    user_id 1
+recipient_id 1
+  end
+  factory :user_recipient do
+    user_id 1
+recipient_id 1
+  end
+
   factory :user do
   	name "Sample User"
   	email "example@user.com"

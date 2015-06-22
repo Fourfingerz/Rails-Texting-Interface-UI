@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :user
-  has_many   :recipients, through: :user
+  belongs_to :recipients
+
   validates  :activity, presence: true
   validates  :message, presence: true, length: { minimum: 1 }
   validates  :schedule_time, presence: true
