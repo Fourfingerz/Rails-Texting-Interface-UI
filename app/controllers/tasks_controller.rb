@@ -2,15 +2,7 @@ class TasksController < ApplicationController
 
   before_filter :authorize, only: [:new]
 
-  def index
-    @tasks = Task.all
-  end
-
   def show
-    @task = Task.find(params[:id])
-  end
-
-  def edit
     @task = Task.find(params[:id])
   end
 
@@ -27,13 +19,13 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @user = current_user
-    @recipients = @user.recipients
+    @recipients = @user.recipient_ownerships
   end
 
   def create
-    @task = Task.new(task_params)  
-    @task.user_id = current_user.id
+    @task = current_user.tasks.build(task_params)  
     if @task.save
+      flash[:success] = "Task Scheduled!"
       redirect_to user_path(session[:user_id])  
   	else
   	  render 'new'
