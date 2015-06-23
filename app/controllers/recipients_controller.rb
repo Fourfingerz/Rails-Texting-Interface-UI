@@ -8,8 +8,9 @@ class RecipientsController < ApplicationController
   end
 
   def create
-  	@recipient = current_user.recipient_ownerships.build(recipient_params)
+  	@recipient = Recipient.new(recipient_params)
   	if @recipient.save
+      @recipient.ownerships.create(user_id: current_user.id)
       flash[:success] = "Recipient created!"
   	  redirect_to user_path(session[:user_id])
   	else
@@ -24,6 +25,6 @@ class RecipientsController < ApplicationController
   private
 
   def recipient_params
-  	params.require(:recipient).permit(:name, :email, :phone, :user_id)
+  	params.require(:recipient).permit(:name, :email, :phone, :user_ownerships_attributes => [:user_id])
   end
 end

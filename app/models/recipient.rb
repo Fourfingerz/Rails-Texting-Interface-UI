@@ -1,6 +1,7 @@
 class Recipient < ActiveRecord::Base
   has_many :ownerships, dependent: :destroy
   has_many :user_ownerships, through: :ownerships, class_name: "User", foreign_key: "user_id", source: :user
+  accepts_nested_attributes_for :user_ownerships, :allow_destroy => true
 
   has_many :tasks, dependent: :destroy
   has_many :user_tasks, through: :tasks, class_name: "User", foreign_key: "user_id", source: :user
