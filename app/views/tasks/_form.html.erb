@@ -28,11 +28,11 @@
   <div class="field">
     <br />
      <p>Recipient List:</p>
-     <%= f.fields_for :recipients do |field| %>
+      <%= f.fields_for :recipients do |r| %>
       <p>
-        <%= field.collection_check_boxes(:recipient_id, Recipient.joins(:ownerships).where(user_id = current_user.id), :id, :name) %>
+        <%= r.collection_check_boxes(:recipient_ids, Recipient.where(user_id = current_user.id), :id, :name)%>
       </p>
-    <% end %>
+      <% end %>
   </div>
 
   <div class="actions">

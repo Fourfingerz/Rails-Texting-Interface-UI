@@ -1,11 +1,14 @@
 class Task < ActiveRecord::Base
   belongs_to :user
-  belongs_to :recipients
+  has_many :ownerships, dependent: :destroy
+  has_many :recipients, through: :ownerships, :foreign_key => :recipient_id
+
+  #belongs_to :recipients
 
   validates  :activity, presence: true
   validates  :message, presence: true, length: { minimum: 1 }
   validates  :schedule_time, presence: true
-  #validates_associated :name, :recipient, presence: true
+  
 
   #after_create :schedule_sending_text
   before_save :change_run_at

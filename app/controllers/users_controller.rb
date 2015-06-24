@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tasks = @user.tasks
-    @user_recipients = Recipient.joins(:ownerships).where(user_id = current_user.id)
-    @task_recipients = Recipient.joins(:tasks).where()
+    @user_recipients = @user.recipients
+    @task_recipients = @user.ownerships.recipients
   end
 
   def new
@@ -42,6 +42,6 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    params.require(:user).permit(:email, :name, :phone, :admin, :password, :password_confirmation, :recipient_id)
+    params.require(:user).permit(:email, :name, :phone, :admin, :password, :password_confirmation, :recipient_id, :task_id)
   end
 end

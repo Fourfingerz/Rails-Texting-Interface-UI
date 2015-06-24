@@ -4,11 +4,11 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @task.ownerships.build
   end
 
   def create
     @task = current_user.tasks.build(task_params)
-    @recipients = Recipient.joins(:ownerships).where(user_id = current_user.id) 
     if @task.save
       flash[:success] = "Task Scheduled!"
       redirect_to user_path(session[:user_id])  
@@ -18,6 +18,10 @@ class TasksController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:id])
+  end
+
+  def edit
     @task = Task.find(params[:id])
   end
 
@@ -36,7 +40,9 @@ class TasksController < ApplicationController
   private 
 
   def task_params
-    params.require(:task).permit(:activity, :message, :user_id, :schedule_time, :delayed_job_id, :completed, :recipients => [])
+    params.require(:task).permit(:activity, :message, :user_id, 
+                                 :schedule_time, :delayed_job_id, :completed,
+                                 recipient_ids:[] )
   end
 
 end
