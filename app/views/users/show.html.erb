@@ -7,7 +7,7 @@
 	  <%= link_to "Add somebody to keep you accountable!", new_recipient_path, class: "btn btn-lg btn-primary" %>
 
 	<ul class="recipients">
-	  <% @recipients.each do |recipient| %>
+	  <% @user_recipients.each do |recipient| %>
 	    <div>
 	      <tr>
 	        <td><%= recipient.name %></td>
@@ -41,7 +41,7 @@
 	        </td>
 			
 			<h3>Keeping you accountable for this task:</h3>
-			<% task.recipients.each do |recipient| %>
+			<% @user_recipients.each do |recipient| %>
 			  <div>
 			  <%= recipient.name %>
 			  </div>

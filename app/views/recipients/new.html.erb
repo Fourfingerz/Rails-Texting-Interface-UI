@@ -9,11 +9,7 @@
 
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form_control' %>
-      
-      <%= f.fields_for :user_ownerships do |ff| %>
-      <%= ff.hidden_field :user_id, value: current_user.id %>
-      <% end %>
-
+  
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form_control' %>
 	  

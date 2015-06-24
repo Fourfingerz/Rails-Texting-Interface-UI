@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tasks = @user.tasks
-    @recipients = @user.recipient_ownerships
+    @user_recipients = Recipient.joins(:ownerships).where(user_id = current_user.id)
+    @task_recipients = Recipient.joins(:tasks).where()
   end
 
   def new

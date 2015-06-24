@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :user
-  belongs_to :recipient
+  belongs_to :recipients
 
   validates  :activity, presence: true
   validates  :message, presence: true, length: { minimum: 1 }

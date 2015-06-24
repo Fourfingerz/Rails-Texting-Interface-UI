@@ -27,11 +27,12 @@
 
   <div class="field">
     <br />
-    <p>Recipient List:</p>
-    
-    <p>
-      <%= f.collection_check_boxes(:recipients, Recipient.where(:user_id => session[:user_id]), :id, :name) %>
-    </p>
+     <p>Recipient List:</p>
+     <%= f.fields_for :recipients do |field| %>
+      <p>
+        <%= field.collection_check_boxes(:recipient_id, Recipient.joins(:ownerships).where(user_id = current_user.id), :id, :name) %>
+      </p>
+    <% end %>
   </div>
 
   <div class="actions">
