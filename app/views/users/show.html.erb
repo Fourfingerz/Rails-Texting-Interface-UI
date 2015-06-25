@@ -41,7 +41,7 @@
 	        </td>
 			
 			<h3>Keeping you accountable for this task:</h3>
-			<% @user_recipients.each do |recipient| %>
+			<% task.recipients.each do |recipient| %>
 			  <div>
 			  <%= recipient.name %>
 			  </div>

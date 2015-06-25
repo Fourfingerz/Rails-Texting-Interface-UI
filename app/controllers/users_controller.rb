@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tasks = @user.tasks
     @user_recipients = @user.recipients
-    @task_recipients = @user.recipients
   end
 
   def new

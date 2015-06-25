@@ -1,10 +1,16 @@
-FEATURES: June 20th 2015
+*** Don't B Lazy ***
+
+FEATURES: June 25th 2015
 
 - Ability to delete recipients belonging to tasks
 
-- Split Ability to add recipients and tasks into two separate pages.
+- Split Ability to add recipients and tasks into TWO separate pages. (CREATE TASK, THEN LINK TO edit TASK page to add RECIPIENTS)
+
+- Adding ability to send text messages to recipient phones.
+
+- Adding ability text on a delayed schedule.
+
+
 
 BUG: June 25th 2015
-
-- Displaying correct recipients on user individual tasks in user show page
 
