@@ -14,4 +14,5 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+  add_flash_types :error, :another_custom_type
 end

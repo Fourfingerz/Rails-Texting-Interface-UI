@@ -1,9 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :user
   has_many :ownerships, dependent: :destroy
-  has_many :recipients, through: :ownerships, :foreign_key => :recipient_id
-
-  #belongs_to :recipients
+  has_many :recipients, through: :ownerships
 
   validates  :activity, presence: true
   validates  :message, presence: true, length: { minimum: 1 }

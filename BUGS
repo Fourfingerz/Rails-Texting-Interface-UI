@@ -7,3 +7,5 @@ BUG: June 20th 2015
 - AUTOMATICALLY Assigns recipients to existing tasks regardless of assignment when adding new recipients. (FIX)
 
 - Fix Model associations for new UserRecipient model
+
+-Edit path only edits task_id: 1, pass task_id to task/edit

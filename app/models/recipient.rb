@@ -1,7 +1,7 @@
 class Recipient < ActiveRecord::Base
   belongs_to :user
   has_many :ownerships, dependent: :destroy
-  has_many :tasks, through: :ownerships, :foreign_key => :task_id
+  has_many :tasks, through: :ownerships
 
   # has_many :ownerships, dependent: :destroy
   # has_many :user_ownerships, through: :ownerships, class_name: "User", foreign_key: "user_id", source: :user
