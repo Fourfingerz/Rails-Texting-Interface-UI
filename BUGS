@@ -2,10 +2,9 @@ FEATURES: June 20th 2015
 
 - Ability to delete recipients belonging to tasks
 
-BUG: June 20th 2015
+- Split Ability to add recipients and tasks into two separate pages.
 
-- AUTOMATICALLY Assigns recipients to existing tasks regardless of assignment when adding new recipients. (FIX)
+BUG: June 25th 2015
 
-- Fix Model associations for new UserRecipient model
+- Displaying correct recipients on user individual tasks in user show page
 
--Edit path only edits task_id: 1, pass task_id to task/edit
