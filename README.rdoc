@@ -2,20 +2,20 @@
 
 FEATURES: June 25th 2015
 
-	*CRITICAL: MAKING SURE users only can access their own pages***
+	* CRITICAL: MAKING SURE users only can access their own pages***
 
 
-	*PRIORITY: Ability to DELETE recipients belonging to tasks
+	* PRIORITY: Ability to DELETE recipients belonging to tasks
 
-	*PRIORITY: Split Ability to add recipients and tasks into TWO separate pages. (CREATE TASK, THEN LINK TO edit TASK page to add RECIPIENTS)
+	* PRIORITY: Split Ability to add recipients and tasks into TWO separate pages. (CREATE TASK, THEN LINK TO edit TASK page to add RECIPIENTS)
 
 
 
-	*MILESTONE: Adding ability to send text messages to recipient phones. 
+	* MILESTONE: Adding ability to send text messages to recipient phones. 
 
-	*MILESTONE: Adding ability text on a delayed schedule. (hours per days, 24 hour intervals)
+	* MILESTONE: Adding ability text on a delayed schedule. (hours per days, 24 hour intervals)
 
-	*MILESTONE: Send task recipients a SMS notifying that User (with a "name that your friends call you by") has pledged a new task. The message will notify user that she will only receive a message if the User fails a day of the goal and (hopefully/jokingly) a task end goal count (ie: 4/5 completed) and a "buy your friend a beer" completion message. 
+	* MILESTONE: Send task recipients a SMS notifying that User (with a "name that your friends call you by") has pledged a new task. The message will notify user that she will only receive a message if the User fails a day of the goal and (hopefully/jokingly) a task end goal count (ie: 4/5 completed) and a "buy your friend a beer" completion message. 
 
 
 BUGS: June 25th 2015
