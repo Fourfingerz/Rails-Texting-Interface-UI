@@ -5,7 +5,7 @@ FEATURES: June 25th 2015
 	-PRIORITY: MAKING SURE users only can access their own pages***
 
 
-	- Ability to delete recipients belonging to tasks
+	-PRIORITY: Ability to DELETE recipients belonging to tasks
 
 	- Split Ability to add recipients and tasks into TWO separate pages. (CREATE TASK, THEN LINK TO edit TASK page to add RECIPIENTS)
 
