@@ -1,28 +1,22 @@
-== README
+== RAILS TEXTING INTERFACE ROADMAP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FEATURES: June 25th 2015
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+	*CRITICAL: MAKING SURE users only can access their own pages***
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+	*PRIORITY: Ability to DELETE recipients belonging to tasks
+
+	*PRIORITY: Split Ability to add recipients and tasks into TWO separate pages. (CREATE TASK, THEN LINK TO edit TASK page to add RECIPIENTS)
+
+
+
+	*MILESTONE: Adding ability to send text messages to recipient phones. 
+
+	*MILESTONE: Adding ability text on a delayed schedule. (hours per days, 24 hour intervals)
+
+	*MILESTONE: Send task recipients a SMS notifying that User (with a "name that your friends call you by") has pledged a new task. The message will notify user that she will only receive a message if the User fails a day of the goal and (hopefully/jokingly) a task end goal count (ie: 4/5 completed) and a "buy your friend a beer" completion message. 
+
+
+BUGS: June 25th 2015
+
