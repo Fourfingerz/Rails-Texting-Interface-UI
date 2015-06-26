@@ -27,21 +27,11 @@
     </p>
   </div>
 
-  <div class="recipient-fields">
-    
-    <p>Recipient List:</p>
-    
-    <p>
-      <%= f.collection_check_boxes(:recipient_ids, current_user.recipients, :id, :name) %>
-      <!-- It's posting to Recipients, but should be to Ownerships -->
-    </p>
-  </div>
-
   <div class="form-actions">
     <br />
     <p>
-      <%= f.submit "Submit" %>
-      <% link_to 'Cancel', users_show_path %>
+      <%= f.submit "Select Your Recipients Next!" %>
+      <%= link_to 'Cancel', user_path(current_user.id) %>
     </p>
   </div>
 

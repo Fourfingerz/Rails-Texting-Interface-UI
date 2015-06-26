@@ -22,15 +22,18 @@ Rails.application.routes.draw do
   get 'notifications/notify'
   get 'signup' => 'users#new'
   get 'task/create'
+  post 'task/create' => 'task#create'
+
+  get 'task/edit_recipients', to: 'tasks#edit_recipients'
+  post 'task/update_recipients', to: 'tasks#update_recipients'
 
   get 'twilio/voice'
   post 'twilio/voice' => 'twilio#voice'
-  post 'task/create' => 'task#create'
 
   resources :users
   resources :sessions
 
-  resources :tasks, :only => [:new, :create, :edit, :index, :update]
+  resources :tasks, :only => [:new, :create, :edit, :task_update_recipients, :task_edit_recipients, :update]
   resources :recipients, :only => [:new, :create, :index]
 
 

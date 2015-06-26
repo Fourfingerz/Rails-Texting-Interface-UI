@@ -37,7 +37,10 @@ gem 'daemons'
 gem 'twitter-bootstrap-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
+# Form helpers
 gem 'simple_form'
+# Controller level respond_to JSON/HTML commands
+gem 'responders', '~> 2.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

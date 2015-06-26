@@ -1,5 +1,7 @@
 class RecipientsController < ApplicationController
 
+  before_filter :authorize, only: [:new]
+
   def index
     @recipients = Recipient.all
   end
@@ -11,7 +13,6 @@ class RecipientsController < ApplicationController
   def create
   	@recipient = current_user.recipients.build(recipient_params)
   	if @recipient.save
-      #@recipient.ownerships.create(user_id: current_user.id)
       flash[:success] = "Recipient created!"
   	  redirect_to user_path(session[:user_id])
   	else

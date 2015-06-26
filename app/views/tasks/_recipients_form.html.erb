@@ -1,0 +1,21 @@
+<%= form_for @task do |f| %>
+
+  <%= error %>
+
+ <div class="recipient-fields">
+    
+    <p>Recipient List:</p>
+    
+    <p>
+      <%= f.collection_check_boxes(:recipient_ids, current_user.recipients, :id, :name) %>
+    </p>
+  </div>
+
+  <div class="form-actions">
+    <br />
+    <p>
+      <%= f.submit "Submit" %>
+      <%= link_to 'Cancel', user_path(current_user.id) %>
+    </p>
+  </div>
+<% end %>

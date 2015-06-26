@@ -4,10 +4,10 @@ FEATURES: June 25th 2015
 
 	* CRITICAL: MAKING SURE users only can access their own pages***
 
+	* PRIORITY: Split Ability to add recipients and tasks into TWO separate pages. (CREATE TASK, THEN LINK TO edit TASK page to add RECIPIENTS)
+    STATUS: DOES NOT REDIRECT after updating recipients
 
 	* PRIORITY: Ability to DELETE recipients belonging to tasks
-
-	* PRIORITY: Split Ability to add recipients and tasks into TWO separate pages. (CREATE TASK, THEN LINK TO edit TASK page to add RECIPIENTS)
 
 
 
