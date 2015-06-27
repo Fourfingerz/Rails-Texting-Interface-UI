@@ -1,13 +1,14 @@
 == RAILS TEXTING INTERFACE ROADMAP
 
-FEATURES: June 25th 2015
-
+BUGS: June 26th 2015	
+]
 	* CRITICAL: MAKING SURE users only can access their own pages***
 
 	* PRIORITY: After adding RECIPIENTS to task, DOES NOT REDIRECT back users view page
 
 
 
+FEATURES: June 26th 2015
 
 	* MILESTONE: Adding ability to send text messages to recipient phones. 
 
@@ -20,5 +21,4 @@ FEATURES: June 25th 2015
 	* MILESTONE: Users should keep Tasks SMALL. Tasks can be grouped together to form PROJECTS. Projects have task completed add to a total PROJECT completed. 
 
 
-BUGS: June 25th 2015
 
