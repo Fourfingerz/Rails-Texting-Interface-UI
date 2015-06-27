@@ -25,15 +25,16 @@ class TasksController < ApplicationController
   end
 
   def sms
+    # Send SMS to task recipients
+
     @task = Task.find(params[:id])
-    @recipients #belonging to task
-    @text #belonging to task
+    @recipients = params[:recipient_ids] # recieves MULTIPLE RECIPIENTS from form_for
+    @text = params[:text] # from form_for
     @phone = params[:phone] #belong to recipient
   
-
-    # Code for send SMS button
-    @those_recieving.each do |recipient| 
-      @task.send_text_message(phone, @task.message)
+    @recipients.each do |recipient| 
+      recipient.send_text_message(phone, message, recipient_id)
+      flash[:notice] = "SMS sent to phone!"
     end
   end
 

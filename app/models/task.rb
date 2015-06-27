@@ -17,22 +17,20 @@ class Task < ActiveRecord::Base
   end
 
   # Sends a text message using secrets ENV and relays to twilio
-  def send_text_message(recipient_ids = [], phone, message)
+  def send_text_message(phone, message)
+    	number_to_send_to = phone
+      twilio_phone = ENV["TWILIO_PHONE_NUM"]
+      twilio_account_sid = Rails.application.secrets.twilio_account_sid
+      twilio_auth_token = Rails.application.secrets.twilio_auth_token
 
-  	number_to_send_to = phone
-    twilio_phone = ENV["TWILIO_PHONE_NUM"]
-    twilio_account_sid = Rails.application.secrets.twilio_account_sid
-    twilio_auth_token = Rails.application.secrets.twilio_auth_token
+      @client = Twilio::REST::Client.new twilio_account_sid, twilio_auth_token
 
-    @client = Twilio::REST::Client.new twilio_account_sid, twilio_auth_token
-
-  	@message = @client.messages.create( 
-      :from => twilio_phone,
-  	  :to   => number_to_send_to,
-  	  :body => message
-    )
-    render plain: @message.status
-    
+    	@message = @client.messages.create( 
+        :from => twilio_phone,
+    	  :to   => number_to_send_to,
+    	  :body => message
+      )
+      render plain: @message.status
   end
 
   def delayed_job
