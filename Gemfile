@@ -62,6 +62,8 @@ group :development, :test do
   gem 'spring'
   # Entity-Relations Diagrams for Rails applications
   gem 'rails-erd'
+  # Pry stack for debugging
+  gem 'pry-byebug'
 end
 
 group :test do

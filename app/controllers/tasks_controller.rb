@@ -20,22 +20,18 @@ class TasksController < ApplicationController
 
 
 
-  def show # page for sms
+  def show  # page for sms
     @task = Task.find(params[:id])
+    @phones = @task.recipients.map(&:phone).join(";")
   end
 
-  def sms
-    # Send SMS to task recipients
-
+  def sms  # Send SMS to task recipients
     @task = Task.find(params[:id])
-    @recipients = params[:recipient_ids] # recieves MULTIPLE RECIPIENTS from form_for
     @text = params[:text] # from form_for
-    @phone = params[:phone] #belong to recipient
+    phones = params[:task][:phones].split(";") #belong to recipient
   
-    @recipients.each do |recipient| 
-      recipient.send_text_message(phone, message, recipient_id)
-      flash[:notice] = "SMS sent to phone!"
-    end
+    send_text_message(message, phones)
+    flash[:notice] = "SMS sent to phone!"
   end
 
 
@@ -48,7 +44,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       #flash[:success] = "Task Updated!"
-      redirect_to task_edit_recipients_path(:id => @task.id)
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end
@@ -83,7 +79,7 @@ class TasksController < ApplicationController
   private 
 
   def task_params
-    params.require(:task).permit(:activity, :message, 
+    params.require(:task).permit(:activity, :message, :phone,
                                  :schedule_time, :delayed_job_id, :completed,
                                  :recipient_ids => [])
   end

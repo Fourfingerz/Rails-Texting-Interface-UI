@@ -1,2 +1,5 @@
-<h1> Add recipients to your new task!</h1>
+<h1> Add recipients to your task!</h1>
 <%= render 'recipients_form' %>
+<%= link_to 'Back to Edit Task', edit_task_path(@task.id) %>
+</br>
+<%= link_to 'Back to Main Page', user_path(current_user.id) %>

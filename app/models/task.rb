@@ -17,7 +17,8 @@ class Task < ActiveRecord::Base
   end
 
   # Sends a text message using secrets ENV and relays to twilio
-  def send_text_message(phone, message)
+  def send_text_message(message, *phone)
+    phone.each do |phone|
     	number_to_send_to = phone
       twilio_phone = ENV["TWILIO_PHONE_NUM"]
       twilio_account_sid = Rails.application.secrets.twilio_account_sid
@@ -31,6 +32,7 @@ class Task < ActiveRecord::Base
     	  :body => message
       )
       render plain: @message.status
+    end
   end
 
   def delayed_job
