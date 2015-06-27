@@ -20,8 +20,21 @@ class TasksController < ApplicationController
 
 
 
-  def show
+  def show # page for sms
     @task = Task.find(params[:id])
+  end
+
+  def sms
+    @task = Task.find(params[:id])
+    @recipients #belonging to task
+    @text #belonging to task
+    @phone = params[:phone] #belong to recipient
+  
+
+    # Code for send SMS button
+    @those_recieving.each do |recipient| 
+      @task.send_text_message(phone, @task.message)
+    end
   end
 
 
@@ -33,7 +46,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-      flash[:success] = "Task Updated!"
+      #flash[:success] = "Task Updated!"
       redirect_to task_edit_recipients_path(:id => @task.id)
     else
       render :edit
@@ -49,19 +62,20 @@ class TasksController < ApplicationController
   def update_recipients
     @task = Task.find(params[:id])
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to user_path(current_user.id), notice: 'Recipient list updated!' }
-      else
-        format.html { render action: "edit_recipients" }
-      end
-    end
-    # if @task.save
-    #   flash[:success] = "Recipients added to task."
-    #   redirect_to user_path(current_user.id)
-    # else
-    #   render 'edit_recipients'
+    # respond_to do |format|
+    #   if @task.update_attributes(task_params)
+    #     format.html { redirect_to user_path(current_user.id), notice: 'Recipient list updated!' }
+    #   else
+    #     format.html { render action: "edit_recipients" }
+    #   end
     # end
+
+    if @task.save
+      flash[:success] = "Recipients added to task."
+      redirect_to user_path(current_user.id)
+    else
+      render 'edit_recipients'
+    end
   end
 
 

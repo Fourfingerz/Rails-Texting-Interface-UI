@@ -1,0 +1,29 @@
+<h1>Tasks #show</h1>
+<p>Find me in app/views/tasks/show.html.erb</p>
+
+<ul class="tasks">
+    <div>
+      <tr>
+        <td><%= @task.activity %></td>
+        <td><%= @task.message %></td>
+        <td><%= @task.schedule_time %></td>
+
+        <h3>Being notified via SMS about your goal</h3>
+
+        <% @task.recipients.each do |recipient| %>
+          <td><%= recipient.name %>
+        <% end %>
+
+      <% form_for @task do |f| %>
+  			<%= f.hidden_field :phone %>
+  			<%= f.hidden_field :message %>
+
+  		  <p>
+  			<%= f.submit "Send Message and Start Timer Now!" %>
+  			<%= link_to 'Go Back', user_path(current_user.id) %>
+  		  </p>
+		  <% end %>
+		
+	  </tr>
+    </div>
+</ul>

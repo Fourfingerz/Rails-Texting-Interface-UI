@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   get 'task/create'
   post 'task/create' => 'task#create'
 
+  get 'tasks/show'
+  post 'tasks/sms' => 'tasks#sms'
+
   get 'task/edit_recipients', to: 'tasks#edit_recipients'
   post 'task/update_recipients', to: 'tasks#update_recipients'
 
@@ -33,7 +36,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
 
-  resources :tasks, :only => [:new, :create, :edit, :task_update_recipients, :task_edit_recipients, :update]
+  resources :tasks, :only => [:new, :create, :show, :edit, :update, :task_update_recipients, :task_edit_recipients]
   resources :recipients, :only => [:new, :create, :index]
 
 
