@@ -1,17 +1,28 @@
 == RAILS TEXTING INTERFACE ROADMAP
 
 BUGS: June 26th 2015	
-]
+
+	- In progress -
+	** CRITICAL: Make sure button to trigger schedule is manual and TRIGGERED by SMS button in edit Tasks page.
+	The button will POST and execute scheduled_sending_text model method. Inside this method is the actual SMS body (message) and array of phones from the Task's assigned recipients. 
+
+	** CRITICAL: If Delayed_jobs_id has ALREADY been assigned to a task, do NOT include START button. Put an IF statement, if delayed_job_id, exists, put CANCEL button, ELSE put BEGIN TIMER (to execute scheduling) to give it a brand new delayed jobs ID.
+
+	- Queued -
 	* CRITICAL: MAKING SURE users only can access their own pages***
 
 	* PRIORITY: After adding RECIPIENTS to task, DOES NOT REDIRECT back users view page
 
 
 
+
+
 FEATURES: June 26th 2015
 
+	- In progress -
 	* MILESTONE: Adding ability text on a delayed schedule. (hours per days, 24 hour intervals)
 
+	- Queued -
 	* MILESTONE: Send task recipients a SMS notifying that User (with a "name that your friends call you by") has pledged a new task. The message will notify user that she will only receive a message if the User fails a day of the goal and (hopefully/jokingly) a task end goal count (ie: 4/5 completed) and a "buy your friend a beer" completion message. 
 
 	* MILESTONE: Users cannot modify tasks once set. Users can only cancel it and start a new task. Recipients for canceled know will immediately know through SMS if User canceled task.

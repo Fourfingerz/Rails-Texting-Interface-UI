@@ -7,7 +7,6 @@ class Task < ActiveRecord::Base
   validates  :message, presence: true, length: { minimum: 1 }
   validates  :schedule_time, presence: true
   
-
   #after_create :schedule_sending_text
   before_save :change_run_at
 
@@ -17,7 +16,7 @@ class Task < ActiveRecord::Base
   end
 
   # Sends a text message using secrets ENV and relays to twilio
-  def self.send_text_message(message, *phone)
+  def send_text_message(message, *phone)
     phone.each do |phone|
     	number_to_send_to = phone
       twilio_phone = ENV["TWILIO_PHONE_NUM"]
@@ -31,7 +30,7 @@ class Task < ActiveRecord::Base
     	  :to   => number_to_send_to,
     	  :body => message
       )
-      #render plain: @message.status
+      render plain: @message.status
     end
   end
 
@@ -39,13 +38,13 @@ class Task < ActiveRecord::Base
     Delayed::Job.find(delayed_job_id)
   end
 
-  def schedule_sending_text
-    job = self.delay(run_at: self.schedule_time).send_text_message
+  def schedule_sending_text # After user hits button on Task page
+    job = self.delay(run_at: self.schedule_time).send_text_message(message, *@phones)
     update_column(:delayed_job_id, job.id)
   end
 
   def change_run_at
-    if schedule_time_changed? &&!new_record?
+    if schedule_time_changed? && !new_record?
       delayed_job.update_column(:run_at, schedule_time)
     end
   end

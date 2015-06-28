@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 
   def show  # page for sms
     @task = Task.find(params[:id])
-    pry
+    #pry 
   end
 
   def sms  # Send SMS to task recipients
@@ -30,8 +30,9 @@ class TasksController < ApplicationController
     message = @task.message
     @phones = @task.recipients.map(&:phone)
 
-    Task.send_text_message(message, *@phones)
-    flash[:notice] = "SMS sent to phone!"
+    # Running model on an INSTANCE of not actual MODEL itself
+    @task.schedule_sending_text  
+    flash[:notice] = "Task scheduled!"
   end
 
 
@@ -44,7 +45,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       #flash[:success] = "Task Updated!"
-      redirect_to user_path(current_user.id)
+      #redirect_to user_path(current_user.id)
+      redirect_to task_path(@task.id)
     else
       render :edit
     end
