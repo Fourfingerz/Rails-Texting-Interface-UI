@@ -3,6 +3,9 @@
 BUGS: June 26th 2015	
 
 	- In progress -
+	
+	*** CRITICAL: Delayed_jobs currently sends out multiple texts for one scheduled. This MUST be fixed before betaing out to limited testing.
+
 	** CRITICAL: Make sure button to trigger schedule is manual and TRIGGERED by SMS button in edit Tasks page.
 	The button will POST and execute scheduled_sending_text model method. Inside this method is the actual SMS body (message) and array of phones from the Task's assigned recipients. 
 
