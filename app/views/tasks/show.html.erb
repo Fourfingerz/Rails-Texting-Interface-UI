@@ -23,9 +23,9 @@
     </br>
 
     <div>
-      <%= form_for @task do |f| %>
-
-        <%= f.hidden_field 'phone', :value => @phones %>
+      <%= form_for :task, url: {action: 'sms', params: {id: @task.id}} do |f| %>
+      
+        <%= f.hidden_field :phone, :value => @phones %>
   			<%= f.hidden_field :message, :value => @task.message %>
 
   		  <p>
