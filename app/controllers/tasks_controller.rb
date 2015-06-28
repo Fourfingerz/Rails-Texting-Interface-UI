@@ -25,12 +25,14 @@ class TasksController < ApplicationController
     #pry 
   end
 
+  # WHEN TESTING DELAYED JOBS, REMEMBER TO START DAEMON 
+  # IN COMMAND LINE WITH bin/delayed_job start (or status, stop)
+  # Run "rake jobs:clear" to clear all DJs
+  
   def sms  # Send SMS to task recipients
-    @task = Task.find_by_id(params[:id])
-    message = @task.message
-    @phones = @task.recipients.map(&:phone)
+    @task = Task.find_by_id(params[:id])  # SMS get view
 
-    # Running model on an INSTANCE of not actual MODEL itself
+    # Action itself
     @task.schedule_sending_text  
     flash[:notice] = "Task scheduled!"
   end
@@ -39,6 +41,7 @@ class TasksController < ApplicationController
 
   def edit # page for UPDATE
     @task = Task.find(params[:id])
+    @recipients = @task.recipients
   end
 
   def update

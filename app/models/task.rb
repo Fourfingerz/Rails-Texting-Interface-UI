@@ -7,7 +7,6 @@ class Task < ActiveRecord::Base
   validates  :message, presence: true, length: { minimum: 1 }
   validates  :schedule_time, presence: true
   
-  #after_create :schedule_sending_text
   before_save :change_run_at
 
   # Gets all tasks made by users referenced by the IDs passed, starting with most recent.
@@ -39,7 +38,8 @@ class Task < ActiveRecord::Base
   end
 
   def schedule_sending_text # After user hits button on Task page
-    job = self.delay(run_at: self.schedule_time).send_text_message(message, *@phones)
+    phone = self.recipients.map(&:phone)
+    job = self.delay(run_at: self.schedule_time).send_text_message(self.message, *phone)
     update_column(:delayed_job_id, job.id)
   end
 
