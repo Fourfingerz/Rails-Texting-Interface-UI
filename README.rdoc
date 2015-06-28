@@ -10,8 +10,6 @@ BUGS: June 26th 2015
 
 FEATURES: June 26th 2015
 
-	* MILESTONE: Adding ability to send text messages to recipient phones. 
-
 	* MILESTONE: Adding ability text on a delayed schedule. (hours per days, 24 hour intervals)
 
 	* MILESTONE: Send task recipients a SMS notifying that User (with a "name that your friends call you by") has pledged a new task. The message will notify user that she will only receive a message if the User fails a day of the goal and (hopefully/jokingly) a task end goal count (ie: 4/5 completed) and a "buy your friend a beer" completion message. 
@@ -21,4 +19,6 @@ FEATURES: June 26th 2015
 	* MILESTONE: Users should keep Tasks SMALL. Tasks can be grouped together to form PROJECTS. Projects have task completed add to a total PROJECT completed. 
 
 
+IMPLIMENTED: 
 
+	DONE* MILESTONE: Adding ability to send text messages to recipient phones. 
