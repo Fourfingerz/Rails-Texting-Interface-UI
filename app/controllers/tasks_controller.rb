@@ -22,14 +22,15 @@ class TasksController < ApplicationController
 
   def show  # page for sms
     @task = Task.find(params[:id])
+    pry
   end
 
   def sms  # Send SMS to task recipients
     @task = Task.find_by_id(params[:id])
     message = @task.message
-    @phones = @task.recipients.map(&:phone).join(";").split(";")
+    @phones = @task.recipients.map(&:phone)
 
-    Task.send_text_message(message, @phones)
+    Task.send_text_message(message, *@phones)
     flash[:notice] = "SMS sent to phone!"
   end
 
