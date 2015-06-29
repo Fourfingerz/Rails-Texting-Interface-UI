@@ -32,16 +32,19 @@ class Task < ActiveRecord::Base
     Delayed::Job.find(delayed_job_id)
   end
 
+  # Manual trigger. Assigns @task a DJ id and starts that instance.
   def schedule_sending_text # After user hits button on Task page
     phone = self.recipients.map(&:phone)
     job = self.delay(run_at: self.schedule_time).send_text_message(self.message, *phone)
     update_column(:delayed_job_id, job.id)
   end
 
+  # Updates a task with new edit if a delayed_job is scheduled
   def change_run_at
     if schedule_time_changed? && !new_record? && !self.delayed_job_id.nil?
       delayed_job.update_column(:run_at, schedule_time)
     end
   end
 
+  
 end

@@ -39,6 +39,8 @@ FEATURES: June 26th 2015
 
 	- Queued -
 
+	*** MILESTONE: Once basic functionality is established. Revert back to TDD to optimize UX and quash bugs. 
+
 	* MILESTONE: Send task recipients a SMS notifying that User (with a "name that your friends call you by") has pledged a new task. The message will notify user that she will only receive a message if the User fails a day of the goal and (hopefully/jokingly) a task end goal count (ie: 4/5 completed) and a "buy your friend a beer" completion message. 
 
 	* MILESTONE: Users cannot modify tasks once set. Users can only cancel it and start a new task. Recipients for canceled know will immediately know through SMS if User canceled task.
