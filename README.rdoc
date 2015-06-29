@@ -4,8 +4,6 @@ BUGS: June 26th 2015
 
 	- In progress -
 
-	*** CRITICAL: Delayed_jobs currently sends out multiple texts for one scheduled. This MUST be fixed before betaing out to limited testing.
-
 	** CRITICAL: Impliment feature to delete tasks (subsequently, their delayed jobs )
 
 	---
@@ -51,3 +49,12 @@ FEATURES: June 26th 2015
 IMPLIMENTED / GRAVEYARD : 
 
 	DONE* MILESTONE: Adding ability to send text messages to recipient phones. 
+
+	FIXED** CRITICAL: Delayed_jobs currently sends out multiple texts for one scheduled. This MUST be fixed before betaing out to limited testing.
+		Reason >> 
+			Delayed Jobs was picking up a missing template error (didn't write the html page yet for SMS action in TaskController). Putting DJ to thinking sms action in the controller didn't send texts when it actually did. 
+		Fixed >>
+			Set up a delayed jobs initializer file with a attempt limit of 1 instead of 3.
+
+
+
