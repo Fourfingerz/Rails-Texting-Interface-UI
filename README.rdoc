@@ -6,13 +6,13 @@ BUGS: June 26th 2015
 
 	*** CRITICAL: Write logic to prevent users from making two DJ instances of a task. One instance of Delayed Job per Task ONLY. (One task limit for limited alpha testing)
 
-	** CRITICAL: Finish the template page for SMS action for TasksController
-
-	** CRITICAL: Impliment feature to delete tasks (subsequently, their delayed jobs )
-
 	---
 
 	- Queued -
+
+	** CRITICAL: Finish the template page for SMS action for TasksController
+
+	** CRITICAL: Impliment feature to delete tasks (subsequently, their delayed jobs )
 
 	** CRITICAL: Fix flash messages appearing on landing page. (Only appear when user signed in and out)
 
@@ -21,7 +21,6 @@ BUGS: June 26th 2015
 
 	** CRITICAL: If Delayed_jobs_id has ALREADY been assigned to a task, do NOT include START button. Put an IF statement, if delayed_job_id, exists, put CANCEL button, ELSE put BEGIN TIMER (to execute scheduling) to give it a brand new delayed jobs ID.
 
-	- Queued -
 	* CRITICAL: MAKING SURE users only can access their own pages***
 
 	* PRIORITY: After adding RECIPIENTS to task, DOES NOT REDIRECT back users view page

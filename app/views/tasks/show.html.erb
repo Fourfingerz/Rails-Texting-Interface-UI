@@ -21,22 +21,23 @@
 
     </br>
     </br>
+      <!-- IF this task doesn't have a DJ id, show this button to start a DJ id and instance || this task HAS a DJ id, and delayedjob already has at least one attempt-->
+        <div>
+          <%= form_for :task, url: {action: 'sms', params: {id: @task.id}} do |f| %>
+          
+            <%= f.hidden_field :phone, :value => @phones %>
+      			<%= f.hidden_field :message, :value => @task.message %>
 
-    <div>
-      <%= form_for :task, url: {action: 'sms', params: {id: @task.id}} do |f| %>
-      
-        <%= f.hidden_field :phone, :value => @phones %>
-  			<%= f.hidden_field :message, :value => @task.message %>
+      		  <p>
+      			<%= f.submit "Send Message and Start Timer Now!" %>
+            </br>
+            </br>
+            <%= link_to 'Modify Task Details and Recipients', edit_task_path(@task.id) %>
+            </br>
+      			<%= link_to 'Go Back', user_path(current_user.id) %>
+      		  </p>
 
-  		  <p>
-  			<%= f.submit "Send Message and Start Timer Now!" %>
-        </br>
-        </br>
-        <%= link_to 'Modify Task Details and Recipients', edit_task_path(@task.id) %>
-        </br>
-  			<%= link_to 'Go Back', user_path(current_user.id) %>
-  		  </p>
-
-		  <% end %>
-    </div>
+    		  <% end %>
+        </div>
+      <!-- ELSE show delayed_id CREATED AT (when button pressed) and a ticker clock showing what time you can see the button again and REDO the task. -->
 </ul>
