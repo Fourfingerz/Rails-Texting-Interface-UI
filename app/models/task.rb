@@ -46,5 +46,26 @@ class Task < ActiveRecord::Base
     end
   end
 
-  
+  # Did that task send an SMS out yet?
+  def delayed_job_attempts
+    dj = self.delayed_job_id
+    taskdj = Delayed::Job.find_by(:id => dj)
+    if taskdj.attempts > 0
+      return true
+    end
+  end
+
+  # If task has NO delayed_job_id, show start button (task hasn't started yet)
+  # Else if task has a DJ id, and attempts > 0 on that DJ_id, show start button (task ran already)
+  # Else show cancel task and ***FAIL*** button (task is currently active and running)
+  def find_task_status
+    if self.delayed_job_id.nil?
+      return "new task"
+    elsif self.delayed_job_id && delayed_job_attempts
+      return "used task"
+    else
+      return "active task"
+    end
+  end
+
 end
