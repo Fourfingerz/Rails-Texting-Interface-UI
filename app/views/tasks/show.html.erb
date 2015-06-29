@@ -22,24 +22,7 @@
     </br>
     </br>
       <!-- IF task is already running, only show a cancel button (results in failure SMS notification) -->
-
-
+        <%= render 'end_task_form' %>
       <!-- ELSE show button below to start task -->
-        <div>
-          <%= form_for :task, url: {action: 'sms', params: {id: @task.id}} do |f| %>
-          
-            <%= f.hidden_field :phone, :value => @phones %>
-      			<%= f.hidden_field :message, :value => @task.message %>
-
-      		  <p>
-      			<%= f.submit "Send Message and Start Timer Now!" %>
-            </br>
-            </br>
-            <%= link_to 'Modify Task Details and Recipients', edit_task_path(@task.id) %>
-            </br>
-      			<%= link_to 'Go Back', user_path(current_user.id) %>
-      		  </p>
-
-    		  <% end %>
-        </div>
+        <%= render 'start_task_form' %>
 </ul>

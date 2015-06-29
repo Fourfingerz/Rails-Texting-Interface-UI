@@ -60,12 +60,17 @@ class Task < ActiveRecord::Base
   # Else show cancel task and ***FAIL*** button (task is currently active and running)
   def find_task_status
     if self.delayed_job_id.nil?
-      return "new task"
+      return "new"
     elsif self.delayed_job_id && delayed_job_attempts
-      return "used task"
+      return "used"
     else
-      return "active task"
+      return "active"
     end
+  end
+
+  # Trigger to stop active DJ task in daemon
+  def kill_task
+
   end
 
 end
