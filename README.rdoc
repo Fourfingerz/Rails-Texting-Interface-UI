@@ -3,7 +3,7 @@
 BUGS: June 26th 2015	
 
 	- In progress -
-	
+
 	*** CRITICAL: Delayed_jobs currently sends out multiple texts for one scheduled. This MUST be fixed before betaing out to limited testing.
 
 	** CRITICAL: Make sure button to trigger schedule is manual and TRIGGERED by SMS button in edit Tasks page.
@@ -29,6 +29,8 @@ FEATURES: June 26th 2015
 	* MILESTONE: Send task recipients a SMS notifying that User (with a "name that your friends call you by") has pledged a new task. The message will notify user that she will only receive a message if the User fails a day of the goal and (hopefully/jokingly) a task end goal count (ie: 4/5 completed) and a "buy your friend a beer" completion message. 
 
 	* MILESTONE: Users cannot modify tasks once set. Users can only cancel it and start a new task. Recipients for canceled know will immediately know through SMS if User canceled task.
+
+	* MILESTONE: SMS blackout period from 12AM to 7AM. Delayed queueing jobs if it falls between that period to be all send out starting 7AM. 
 
 	* MILESTONE: Users should keep Tasks SMALL. Tasks can be grouped together to form PROJECTS. Projects have task completed add to a total PROJECT completed. 
 
