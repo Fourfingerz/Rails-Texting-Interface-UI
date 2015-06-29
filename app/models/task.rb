@@ -9,11 +9,6 @@ class Task < ActiveRecord::Base
   
   before_save :change_run_at
 
-  # Gets all tasks made by users referenced by the IDs passed, starting with most recent.
-  def self.by_user_ids(*ids)
-    where(:user_id => ids.flatten.compact.uniq).order('created_at DESC')
-  end
-
   # Sends a text message using secrets ENV and relays to twilio
   def send_text_message(message, *phone)
     phone.each do |phone|
@@ -44,17 +39,9 @@ class Task < ActiveRecord::Base
   end
 
   def change_run_at
-    if schedule_time_changed? && !new_record?
+    if schedule_time_changed? && !new_record? && !self.delayed_job_id.nil?
       delayed_job.update_column(:run_at, schedule_time)
     end
   end
 
-  def handle_recipients
-    self.recipient_ids = self.recipient_ids.select(&:present?).join(';') 
-    # .select(&:present?) is necessary to avoid empty objects to be stored
-  end
-
-  def similars
-    self.class.find(self.recipient_ids.split(';'))
-  end
 end

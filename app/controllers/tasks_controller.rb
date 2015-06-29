@@ -28,7 +28,9 @@ class TasksController < ApplicationController
   # WHEN TESTING DELAYED JOBS, REMEMBER TO START DAEMON 
   # IN COMMAND LINE WITH bin/delayed_job start (or status, stop)
   # Run "rake jobs:clear" to clear all DJs
-  
+  # 
+  # Run Delayed::Job.all in Rails Console to see DJs
+
   def sms  # Send SMS to task recipients
     @task = Task.find_by_id(params[:id])  # SMS get view
 
@@ -47,8 +49,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-      #flash[:success] = "Task Updated!"
-      #redirect_to user_path(current_user.id)
+      flash[:success] = "Task Updated!"
       redirect_to task_path(@task.id)
     else
       render :edit
