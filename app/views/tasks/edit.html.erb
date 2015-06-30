@@ -2,7 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Add Recipients', task_edit_recipients_path(:id => @task.id) %>
+<%= link_to 'Add or Remove Recipients', task_edit_recipients_path(:id => @task.id) %>
 <% # SHOW TASK RECIPIENTS HERE %>
 </br>
 <%= link_to 'Go Back', task_path(@task.id) %>

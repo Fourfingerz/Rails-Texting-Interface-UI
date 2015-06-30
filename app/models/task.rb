@@ -10,22 +10,22 @@ class Task < ActiveRecord::Base
   before_save :change_run_at
 
   # Sends a text message using secrets ENV and relays to twilio
-  def send_text_message(message, *phone)
-    phone.each do |phone|
-    	number_to_send_to = phone
-      twilio_phone = ENV["TWILIO_PHONE_NUM"]
-      twilio_account_sid = Rails.application.secrets.twilio_account_sid
-      twilio_auth_token = Rails.application.secrets.twilio_auth_token
+  def send_text_messages
+    phones = self.recipients.map(&:phone)
+    twilio_phone = ENV["TWILIO_PHONE_NUM"]
+    twilio_account_sid = Rails.application.secrets.twilio_account_sid
+    twilio_auth_token = Rails.application.secrets.twilio_auth_token
 
-      @client = Twilio::REST::Client.new twilio_account_sid, twilio_auth_token
+    @client = Twilio::REST::Client.new twilio_account_sid, twilio_auth_token
 
-    	@message = @client.messages.create( 
+    phones.each do |recipient_phone|
+      @client.messages.create( 
         :from => twilio_phone,
-    	  :to   => number_to_send_to,
-    	  :body => message
+      	:to   => recipient_phone,
+      	:body => self.message
       )
-      render plain: @message.status
     end
+    
   end
 
   def delayed_job
@@ -34,8 +34,7 @@ class Task < ActiveRecord::Base
 
   # Manual trigger. Assigns @task a DJ id and starts that instance.
   def schedule_sending_text # After user hits button on Task page
-    phone = self.recipients.map(&:phone)
-    job = self.delay(run_at: self.schedule_time).send_text_message(self.message, *phone)
+    job = self.delay(run_at: self.schedule_time).send_text_messages
     update_column(:delayed_job_id, job.id)
   end
 
