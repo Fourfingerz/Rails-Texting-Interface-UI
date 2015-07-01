@@ -25,11 +25,13 @@ class Task < ActiveRecord::Base
       	:body => self.message
       )
     end
-    
   end
 
   def delayed_job
     Delayed::Job.find(delayed_job_id)
+  end
+
+  def current_delayed_job  # What is the current DJ task is assigned to?
   end
 
   # Manual trigger. Assigns @task a DJ id and starts that instance.
